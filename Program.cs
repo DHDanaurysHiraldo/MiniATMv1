@@ -79,7 +79,7 @@ do
                     Console.WriteLine();
                     //=====================
 
-                    Console.Write("Ingrese el saldo a depositar: ");
+                    Console.Write("Ingrese el monto a depositar: ");
                     if (!decimal.TryParse(Console.ReadLine(), out montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: monto inválido");
@@ -157,7 +157,7 @@ do
                     //=====================
 
                     Console.WriteLine($"SALDO ACTUAL: {saldoDisponible}");
-                    Console.WriteLine("Ingrese el saldo a retirar: ");
+                    Console.Write("Ingrese el monto a retirar: ");
                     if (!decimal.TryParse(Console.ReadLine(), out montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: monto inválido");
@@ -211,6 +211,7 @@ do
                 break;
 
             case 4:
+                Console.WriteLine("Gracias por preferir nuestro ATM!!");
                 Console.WriteLine("Saliendo del programa...");
                 break;
 
