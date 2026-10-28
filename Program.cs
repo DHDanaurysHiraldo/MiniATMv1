@@ -5,8 +5,9 @@ decimal montoOperacion;
 int opcionDeMenu;
 bool estadoCuenta = true; //false
 
-while (true)
+do
 {
+    Console.Clear();
     Console.WriteLine("=================================");
     Console.WriteLine("===== SISTEMA DE CAJERO ATM =====");
     Console.WriteLine("=========================== v.1 =");
@@ -26,10 +27,16 @@ while (true)
     if (!int.TryParse(Console.ReadLine(), out opcionDeMenu))
     {
         Console.WriteLine("Operación Rechazada: Opción inválida");
+        Console.WriteLine("Presione una tecla para volver...");
+        Console.ReadKey();
+        Console.Clear();
     }
     else if (opcionDeMenu > 4)
     {
         Console.WriteLine("Operación Rechazada: Opción inválida");
+        Console.WriteLine("Presione una tecla para volver...");
+        Console.ReadKey();
+        Console.Clear();
     }
     else
     {
@@ -41,18 +48,17 @@ while (true)
                 Console.WriteLine("Presione una tecla para volver...");
                 Console.ReadKey();
                 Console.Clear();
-                continue;
+                break;
             // ==================
             case 2:
                 if (estadoCuenta == false)
                 {
                     Console.WriteLine("Operación Rechazada: su cuenta no está activa");
-                    //Console.WriteLine("Saliendo del programa...");
                     // VOLVER AL MENU ===
                     Console.WriteLine("Presione una tecla para volver...");
                     Console.ReadKey();
                     Console.Clear();
-                    continue;
+                    //break;
                     // ==================
 
                 }
@@ -77,10 +83,16 @@ while (true)
                     if (!decimal.TryParse(Console.ReadLine(), out montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: monto inválido");
+                        Console.WriteLine("Presione una tecla para volver...");
+                        Console.ReadKey();
+                        Console.Clear();
                     }
                     else if (montoOperacion <= 0)
                     {
                         Console.WriteLine("Operación Rechazada: el monto debe ser mayor que cero");
+                        Console.WriteLine("Presione una tecla para volver...");
+                        Console.ReadKey();
+                        Console.Clear();
                     }
                     else
                     {
@@ -107,7 +119,7 @@ while (true)
                         Console.WriteLine("Presione una tecla para volver...");
                         Console.ReadKey();
                         Console.Clear();
-                        continue;
+                        //break;
                         // ==================
                     }
                 }
@@ -124,7 +136,7 @@ while (true)
                     Console.WriteLine("Presione una tecla para volver...");
                     Console.ReadKey();
                     Console.Clear();
-                    continue;
+                    break;
                     // ==================
                 }
                 else
@@ -149,14 +161,23 @@ while (true)
                     if (!decimal.TryParse(Console.ReadLine(), out montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: monto inválido");
+                        Console.WriteLine("Presione una tecla para volver...");
+                        Console.ReadKey();
+                        Console.Clear();
                     }
                     else if (montoOperacion <= 0)
                     {
                         Console.WriteLine("Operación Rechazada: el monto debe ser mayor que cero");
+                        Console.WriteLine("Presione una tecla para volver...");
+                        Console.ReadKey();
+                        Console.Clear();
                     }
                     else if (montoOperacion > saldoDisponible)
                     {
                         Console.WriteLine("Operación Rechazada: Fondos Insuficientes");
+                        Console.WriteLine("Presione una tecla para volver...");
+                        Console.ReadKey();
+                        Console.Clear();
                     }
                     else
                     {
@@ -183,7 +204,7 @@ while (true)
                         Console.WriteLine("Presione una tecla para volver...");
                         Console.ReadKey();
                         Console.Clear();
-                        continue;
+                        break;
                         // ==================
                     }
                 }
@@ -195,17 +216,16 @@ while (true)
 
 
             default:
-                Console.WriteLine("Ingrese una opción válida");
+                Console.WriteLine("Operación Rechazada: Opción inválida");
                 // VOLVER AL MENU ===
                 Console.WriteLine("Presione una tecla para volver...");
                 Console.ReadKey();
                 Console.Clear();
-                continue;
+                break;
                 // ==================
-                
-      
         }
     }
 }
+while (opcionDeMenu != 4);
 
-// AGREGAR MANEJO DE EXCEPCIÓN QUE NO HAGA BUCLE SI LA PERSONA NO INGRESA NADA (DE LA A "ENTER" EN LOS MENUS)...
+
