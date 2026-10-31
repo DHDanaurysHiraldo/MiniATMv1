@@ -28,11 +28,8 @@ do
         switch (opcionDeMenu)
         {
             case 1:
-                Console.WriteLine($"Saldo Actual: RD$ {saldoDisponible}");
-                // VOLVER AL MENU ===
-                Console.WriteLine("Presione una tecla para volver...");
-                Console.ReadKey();
-                Console.Clear();
+                ConsultarSaldo(saldoDisponible);
+                VolverMenu();
                 break;
             // ==================
             case 2:
@@ -232,4 +229,17 @@ static void MostrarMenu(string nombreCliente, string numeroCuenta)
     Console.WriteLine("2. Depositar saldo");
     Console.WriteLine("3. Retirar saldo");
     Console.WriteLine("4. Salir");
+}
+
+static void ConsultarSaldo(decimal saldoDisponible)
+{
+    Console.WriteLine($"Saldo Actual: RD$ {saldoDisponible}");
+    
+}
+
+static void VolverMenu()
+{
+    Console.WriteLine("Presione una tecla para volver...");
+    Console.ReadKey();
+    Console.Clear();
 }
