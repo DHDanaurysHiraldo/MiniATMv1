@@ -7,22 +7,7 @@ bool estadoCuenta = true; //false
 
 do
 {
-    Console.Clear();
-    Console.WriteLine("=================================");
-    Console.WriteLine("===== SISTEMA DE CAJERO ATM =====");
-    Console.WriteLine("=========================== v.1 =");
-
-    Console.WriteLine();
-
-    Console.WriteLine("INFORMACIÓN DE CUENTA ACTUAL:");
-    Console.WriteLine($"Cliente: {nombreCliente}");
-    Console.WriteLine($"No. de Cuenta: {numeroCuenta}");
-    Console.WriteLine();
-    Console.WriteLine("¿Que desea realizar hoy?");
-    Console.WriteLine("1. Consultar Saldo");
-    Console.WriteLine("2. Depositar saldo");
-    Console.WriteLine("3. Retirar saldo");
-    Console.WriteLine("4. Salir");
+    MostrarMenu(nombreCliente, numeroCuenta);
 
     if (!int.TryParse(Console.ReadLine(), out opcionDeMenu))
     {
@@ -229,4 +214,22 @@ do
 }
 while (opcionDeMenu != 4);
 
+static void MostrarMenu(string nombreCliente, string numeroCuenta)
+{
+    Console.Clear();
+    Console.WriteLine("=================================");
+    Console.WriteLine("===== SISTEMA DE CAJERO ATM =====");
+    Console.WriteLine("=========================== v.1 =");
 
+    Console.WriteLine();
+
+    Console.WriteLine("INFORMACIÓN DE CUENTA ACTUAL:");
+    Console.WriteLine($"Cliente: {nombreCliente}");
+    Console.WriteLine($"No. de Cuenta: {numeroCuenta}");
+    Console.WriteLine();
+    Console.WriteLine("¿Que desea realizar hoy?");
+    Console.WriteLine("1. Consultar Saldo");
+    Console.WriteLine("2. Depositar saldo");
+    Console.WriteLine("3. Retirar saldo");
+    Console.WriteLine("4. Salir");
+}
