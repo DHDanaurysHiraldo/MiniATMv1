@@ -79,7 +79,7 @@ do
 
                     MostrarEncabezado(nombreCliente, numeroCuenta);
 
-                    Console.WriteLine($"SALDO ACTUAL: {saldoDisponible}");
+                    ConsultarSaldo(saldoDisponible);
                     if (!LeerMonto("Ingrese el monto a retirar: ", out montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: monto inválido");
