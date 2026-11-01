@@ -46,7 +46,7 @@ do
                         VolverMenu();
 
                     }
-                    else if (montoOperacion <= 0)
+                    else if (!EsMontoValido(montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: el monto debe ser mayor que cero");
                         VolverMenu();
@@ -87,13 +87,13 @@ do
                         VolverMenu();
 
                     }
-                    else if (montoOperacion <= 0)
+                    else if (!EsMontoValido(montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: el monto debe ser mayor que cero");
                         VolverMenu();
 
                     }
-                    else if (montoOperacion > saldoDisponible)
+                    else if (!TieneFondos(saldoDisponible, montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: Fondos Insuficientes");
                         VolverMenu();
@@ -182,4 +182,14 @@ static bool LeerMonto(string mensaje, out decimal montoOperacion)
 {
     Console.Write(mensaje);
     return decimal.TryParse(Console.ReadLine(), out montoOperacion);
+}
+
+static bool EsMontoValido(decimal montoOperacion)
+{
+    return montoOperacion > 0;
+}
+
+static bool TieneFondos(decimal saldoDisponible, decimal montoOperacion)
+{
+    return saldoDisponible > montoOperacion;
 }
