@@ -12,16 +12,13 @@ do
     if (!int.TryParse(Console.ReadLine(), out opcionDeMenu))
     {
         Console.WriteLine("Operación Rechazada: Opción inválida");
-        Console.WriteLine("Presione una tecla para volver...");
-        Console.ReadKey();
-        Console.Clear();
+        VolverMenu();
     }
     else if (opcionDeMenu > 4)
     {
         Console.WriteLine("Operación Rechazada: Opción inválida");
-        Console.WriteLine("Presione una tecla para volver...");
-        Console.ReadKey();
-        Console.Clear();
+        VolverMenu();
+
     }
     else
     {
@@ -48,22 +45,20 @@ do
                     if (!decimal.TryParse(Console.ReadLine(), out montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: monto inválido");
-                        Console.WriteLine("Presione una tecla para volver...");
-                        Console.ReadKey();
-                        Console.Clear();
+                        VolverMenu();
+
                     }
                     else if (montoOperacion <= 0)
                     {
                         Console.WriteLine("Operación Rechazada: el monto debe ser mayor que cero");
-                        Console.WriteLine("Presione una tecla para volver...");
-                        Console.ReadKey();
-                        Console.Clear();
+                        VolverMenu();
+
                     }
                     else
                     {
                         saldoDisponible = saldoDisponible + montoOperacion;
 
-                        MostrarMenu(nombreCliente, numeroCuenta);
+                        MostrarEncabezado(nombreCliente, numeroCuenta);
 
                         Console.WriteLine("DEPÓSITO EXITOSO");
                         Console.WriteLine($"Saldo Actual: RD$ {saldoDisponible}");
@@ -92,29 +87,26 @@ do
                     if (!decimal.TryParse(Console.ReadLine(), out montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: monto inválido");
-                        Console.WriteLine("Presione una tecla para volver...");
-                        Console.ReadKey();
-                        Console.Clear();
+                        VolverMenu();
+
                     }
                     else if (montoOperacion <= 0)
                     {
                         Console.WriteLine("Operación Rechazada: el monto debe ser mayor que cero");
-                        Console.WriteLine("Presione una tecla para volver...");
-                        Console.ReadKey();
-                        Console.Clear();
+                        VolverMenu();
+
                     }
                     else if (montoOperacion > saldoDisponible)
                     {
                         Console.WriteLine("Operación Rechazada: Fondos Insuficientes");
-                        Console.WriteLine("Presione una tecla para volver...");
-                        Console.ReadKey();
-                        Console.Clear();
+                        VolverMenu();
+
                     }
                     else
                     {
                         saldoDisponible = saldoDisponible - montoOperacion;
 
-                        MostrarMenu(nombreCliente, numeroCuenta);
+                        MostrarEncabezado(nombreCliente, numeroCuenta);
                         
                         Console.WriteLine("RETIRO EXITOSO");
                         Console.WriteLine($"Saldo Actual: RD$ {saldoDisponible}");
@@ -150,17 +142,7 @@ while (opcionDeMenu != 4);
 
 static void MostrarMenu(string nombreCliente, string numeroCuenta)
 {
-    Console.Clear();
-    Console.WriteLine("=================================");
-    Console.WriteLine("===== SISTEMA DE CAJERO ATM =====");
-    Console.WriteLine("=========================== v.1 =");
-
-    Console.WriteLine();
-
-    Console.WriteLine("INFORMACIÓN DE CUENTA ACTUAL:");
-    Console.WriteLine($"Cliente: {nombreCliente}");
-    Console.WriteLine($"No. de Cuenta: {numeroCuenta}");
-    Console.WriteLine();
+    MostrarEncabezado(nombreCliente, numeroCuenta);
     Console.WriteLine("¿Que desea realizar hoy?");
     Console.WriteLine("1. Consultar Saldo");
     Console.WriteLine("2. Depositar saldo");
