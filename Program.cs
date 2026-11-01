@@ -9,7 +9,7 @@ do
 {
     MostrarMenu(nombreCliente, numeroCuenta);
 
-    if (!int.TryParse(Console.ReadLine(), out opcionDeMenu))
+    if (!LeerOpcion(out opcionDeMenu))
     {
         Console.WriteLine("Operación Rechazada: Opción inválida");
         VolverMenu();
@@ -103,7 +103,7 @@ do
                         saldoDisponible = Retirar(saldoDisponible, montoOperacion);
 
                         MostrarEncabezado(nombreCliente, numeroCuenta);
-                        
+
                         Console.WriteLine("RETIRO EXITOSO");
                         Console.WriteLine($"Saldo Actual: RD$ {saldoDisponible}");
 
@@ -182,6 +182,10 @@ static bool LeerMonto(string mensaje, out decimal montoOperacion)
     Console.Write(mensaje);
     return decimal.TryParse(Console.ReadLine(), out montoOperacion);
 }
+static bool LeerOpcion(out int opcionDeMenu)
+{
+    return int.TryParse(Console.ReadLine(), out opcionDeMenu);
+}
 
 static bool EsMontoValido(decimal montoOperacion)
 {
@@ -215,3 +219,4 @@ static decimal Retirar(decimal saldoDisponible, decimal montoOperacion)
     }
     return saldoDisponible - montoOperacion;
 }
+
