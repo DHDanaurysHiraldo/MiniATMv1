@@ -20,7 +20,7 @@ Archivo de referencia: [`Program.cs`](../Program.cs), rama `feature/4.5-metodos`
 |---|---|---|---|---|---|
 | `MostrarEncabezado` | `string nombreCliente`, `string numeroCuenta` | `void` | Limpia la pantalla y muestra el título y los datos de la cuenta | L147–160 | L41, L59, L80, L105, L139 |
 | `MostrarMenu` | `string nombreCliente`, `string numeroCuenta` | `void` | Muestra el encabezado y las 4 opciones; no cambia el saldo | L137–145 | L10 |
-| `ConsultarSaldo` | `decimal saldoDisponible` | `void` | Muestra el saldo recibido; no modifica datos | L162–166 | L28 |
+| `ConsultarSaldo` | `decimal saldoDisponible` | `void` | Muestra el saldo recibido; no modifica datos | L162–166 | L28, L82 |
 | `VolverMenu` | — | `void` | Pausa hasta que el usuario presione una tecla y limpia la pantalla | L168–173 | 13 llamadas |
 | `CuentaEstaActiva` | `bool estadoCuenta` | `bool` | Indica si la cuenta permite operar | L175–178 | L33, L71 |
 | `LeerOpcion` | `out int opcionDeMenu` | `bool` | Lee la opción del menú; indica si la entrada es numérica | L185–188 | L12 |
@@ -93,4 +93,4 @@ Las capturas se guardan en [`docs/evidencias/4.5/`](evidencias/4.5/), separadas 
 
 ## 6. Nota sobre el pseudocódigo
 
-En [`MiniATM_4.5.psc`](MiniATM_4.5.psc), los métodos `void` se representan como `SubProceso` y los que devuelven un valor como `Funcion`. El parámetro `out` de C# se representa con `Por Referencia`. PSeInt no permite comprobar si una entrada es numérica sin producir un error, por lo que `LeerOpcion` y `LeerMonto` siempre devuelven `Verdadero` en el pseudocódigo; en C#, esa validación la realiza `TryParse`.
+En [`pseudocodigo_4.5.md`](pseudocodigo_4.5.md), los métodos `void` se representan como `SubProceso` y los que devuelven un valor como `Funcion`. El parámetro `out` de C# se representa con `Por Referencia`. PSeInt no permite comprobar si una entrada es numérica sin producir un error, por lo que `LeerOpcion` y `LeerMonto` siempre devuelven `Verdadero` en el pseudocódigo; en C#, esa validación la realiza `TryParse`.

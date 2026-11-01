@@ -111,13 +111,11 @@ Las capturas están en [`docs/evidencias/4.5/`](docs/evidencias/4.5/).
 ├── MiniATMv1.slnx                 # Solución
 ├── README.md
 └── docs/
-    ├── MiniATM_4.5.psc            # Pseudocódigo 4.5 (SubProcesos y Funciones)
+    ├── pseudocodigo_4.5.md        # Pseudocódigo 4.5 documentado
     ├── trazabilidad_4.5.md        # Matriz de trazabilidad 4.5
-    ├── MiniATMV1.psc              # Pseudocódigo V1 (histórico)
-    ├── trazabilidad.md            # Matriz de trazabilidad V1 (histórico)
     └── evidencias/
         ├── 4.5/                   # Capturas de la regresión 4.5
-        └── CP-xx_n.png            # Capturas de V1
+        └── CP-xx_n.png            # Capturas de V1 (laboratorio 3.10)
 ```
 
 ## Historial de versiones
