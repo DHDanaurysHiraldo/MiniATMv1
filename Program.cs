@@ -194,7 +194,7 @@ static bool EsMontoValido(decimal montoOperacion)
 
 static bool TieneFondos(decimal saldoDisponible, decimal montoOperacion)
 {
-    return saldoDisponible > montoOperacion;
+    return saldoDisponible >= montoOperacion;
 }
 
 static decimal Depositar(decimal saldoDisponible, decimal montoOperacion)
