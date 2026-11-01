@@ -39,10 +39,8 @@ do
                 else
                 {
                     MostrarEncabezado(nombreCliente, numeroCuenta);
-                  
 
-                    Console.Write("Ingrese el monto a depositar: ");
-                    if (!decimal.TryParse(Console.ReadLine(), out montoOperacion))
+                    if (!LeerMonto("Ingrese el monto a depositar: ", out montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: monto inválido");
                         VolverMenu();
@@ -74,7 +72,7 @@ do
                 {
                     Console.WriteLine("Operación Rechazada: su cuenta no está activa");
                     VolverMenu();
-                    //break;
+
 
                 }
                 else
@@ -83,8 +81,7 @@ do
                     MostrarEncabezado(nombreCliente, numeroCuenta);
 
                     Console.WriteLine($"SALDO ACTUAL: {saldoDisponible}");
-                    Console.Write("Ingrese el monto a retirar: ");
-                    if (!decimal.TryParse(Console.ReadLine(), out montoOperacion))
+                    if (!LeerMonto("Ingrese el monto a retirar: ", out montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: monto inválido");
                         VolverMenu();
@@ -112,8 +109,6 @@ do
                         Console.WriteLine($"Saldo Actual: RD$ {saldoDisponible}");
 
                         VolverMenu();
-
-                        //break;
 
                     }
                 }
@@ -181,4 +176,10 @@ static void VolverMenu()
 static bool CuentaEstaActiva(bool estadoCuenta)
 {
     return estadoCuenta;
+}
+
+static bool LeerMonto(string mensaje, out decimal montoOperacion)
+{
+    Console.Write(mensaje);
+    return decimal.TryParse(Console.ReadLine(), out montoOperacion);
 }
