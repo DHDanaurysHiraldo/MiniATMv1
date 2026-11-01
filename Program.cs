@@ -54,7 +54,7 @@ do
                     }
                     else
                     {
-                        saldoDisponible = saldoDisponible + montoOperacion;
+                        saldoDisponible = Depositar(saldoDisponible, montoOperacion);
 
                         MostrarEncabezado(nombreCliente, numeroCuenta);
 
@@ -72,7 +72,6 @@ do
                 {
                     Console.WriteLine("Operación Rechazada: su cuenta no está activa");
                     VolverMenu();
-
 
                 }
                 else
@@ -101,7 +100,7 @@ do
                     }
                     else
                     {
-                        saldoDisponible = saldoDisponible - montoOperacion;
+                        saldoDisponible = Retirar(saldoDisponible, montoOperacion);
 
                         MostrarEncabezado(nombreCliente, numeroCuenta);
                         
@@ -192,4 +191,27 @@ static bool EsMontoValido(decimal montoOperacion)
 static bool TieneFondos(decimal saldoDisponible, decimal montoOperacion)
 {
     return saldoDisponible > montoOperacion;
+}
+
+static decimal Depositar(decimal saldoDisponible, decimal montoOperacion)
+{
+    if (!EsMontoValido(montoOperacion))
+    {
+        return saldoDisponible;         
+    }
+    return saldoDisponible + montoOperacion;    
+}
+
+static decimal Retirar(decimal saldoDisponible, decimal montoOperacion)
+{
+    if (!EsMontoValido(montoOperacion))
+    {
+        return saldoDisponible;
+    }
+
+    if (!TieneFondos(saldoDisponible, montoOperacion))
+    {
+        return saldoDisponible;
+    }
+    return saldoDisponible - montoOperacion;
 }
