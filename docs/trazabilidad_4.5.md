@@ -73,21 +73,23 @@ Precondición: cada caso inicia con el programa recién abierto, saldo RD$10,000
 
 | Prueba | Escenario | Resultado esperado | Métodos ejercitados | Resultado obtenido | Estado | Evidencia |
 |---|---|---|---|---|---|---|
-| CP-01 | Consultar saldo | Mostrar RD$10,000 | `ConsultarSaldo` | ⬜ | ⬜ | ⬜ |
-| CP-02 | Depositar RD$2,000 | Saldo RD$12,000 | `LeerMonto`, `EsMontoValido`, `Depositar` | ⬜ | ⬜ | ⬜ |
-| CP-03 | Retirar RD$3,000 | Saldo RD$7,000 | `LeerMonto`, `EsMontoValido`, `TieneFondos`, `Retirar` | ⬜ | ⬜ | ⬜ |
-| CP-04 | Depositar RD$0 o -100 | Rechazar; saldo RD$10,000 | `EsMontoValido` | ⬜ | ⬜ | ⬜ |
-| CP-05 | Retirar RD$15,000 | Rechazar por fondos insuficientes; saldo sin cambio | `TieneFondos` | ⬜ | ⬜ | ⬜ |
-| CP-06 | Cuenta inactiva: intentar depósito y retiro | Rechazar ambas operaciones; saldo sin cambio | `CuentaEstaActiva` | ⬜ | ⬜ | ⬜ |
-| CP-07 | Elegir opción 9 o ingresar letras | Mensaje de error y retorno al menú | `LeerOpcion`, `VolverMenu` | ⬜ | ⬜ | ⬜ |
-| CP-08 | Elegir opción 4 | Terminar ejecución | — (`case 4`) | ⬜ | ⬜ | ⬜ |
-| CP-09 | Depositar 2,000 y luego retirar 3,000 | Saldo final RD$9,000 en la misma sesión | `Depositar`, `Retirar` (RF-15) | ⬜ | ⬜ | ⬜ |
-| CP-10 | Ingresar letras como monto | Rechazar sin excepción ni cambio de saldo | `LeerMonto` | ⬜ | ⬜ | ⬜ |
-| CP-11* | Retirar el saldo exacto (RD$10,000) | Retiro exitoso; saldo RD$0 | `TieneFondos`, `Retirar` | ⬜ | ⬜ | ⬜ |
+| CP-01 | Consultar saldo | Mostrar RD$10,000 | `ConsultarSaldo` | Coincide con el resultado esperado | ✅ Pasó | [Lab_4.5](evidencias/Lab_4.5/) |
+| CP-02 | Depositar RD$2,000 | Saldo RD$12,000 | `LeerMonto`, `EsMontoValido`, `Depositar` | Coincide con el resultado esperado | ✅ Pasó | [Lab_4.5](evidencias/Lab_4.5/) |
+| CP-03 | Retirar RD$3,000 | Saldo RD$7,000 | `LeerMonto`, `EsMontoValido`, `TieneFondos`, `Retirar` | Coincide con el resultado esperado | ✅ Pasó | [Lab_4.5](evidencias/Lab_4.5/) |
+| CP-04 | Depositar RD$0 o -100 | Rechazar; saldo RD$10,000 | `EsMontoValido` | Coincide con el resultado esperado | ✅ Pasó | [Lab_4.5](evidencias/Lab_4.5/) |
+| CP-05 | Retirar RD$15,000 | Rechazar por fondos insuficientes; saldo sin cambio | `TieneFondos` | Coincide con el resultado esperado | ✅ Pasó | [Lab_4.5](evidencias/Lab_4.5/) |
+| CP-06 | Cuenta inactiva: intentar depósito y retiro | Rechazar ambas operaciones; saldo sin cambio | `CuentaEstaActiva` | Coincide con el resultado esperado | ✅ Pasó | [Lab_4.5](evidencias/Lab_4.5/) |
+| CP-07 | Elegir opción 9 o ingresar letras | Mensaje de error y retorno al menú | `LeerOpcion`, `VolverMenu` | Coincide con el resultado esperado | ✅ Pasó | [Lab_4.5](evidencias/Lab_4.5/) |
+| CP-08 | Elegir opción 4 | Terminar ejecución | — (`case 4`) | Coincide con el resultado esperado | ✅ Pasó | [Lab_4.5](evidencias/Lab_4.5/) |
+| CP-09 | Depositar 2,000 y luego retirar 3,000 | Saldo final RD$9,000 en la misma sesión | `Depositar`, `Retirar` (RF-15) | Coincide con el resultado esperado | ✅ Pasó | [Lab_4.5](evidencias/Lab_4.5/) |
+| CP-10 | Ingresar letras como monto | Rechazar sin excepción ni cambio de saldo | `LeerMonto` | Coincide con el resultado esperado | ✅ Pasó | [Lab_4.5](evidencias/Lab_4.5/) |
+| CP-11* | Retirar el saldo exacto (RD$10,000) | Retiro exitoso; saldo RD$0 | `TieneFondos`, `Retirar` | Coincide con el resultado esperado | ✅ Pasó | [Lab_4.5](evidencias/Lab_4.5/) |
 
 \* **CP-11 es una prueba adicional** de valor límite para RN-04. No figura en el BRD; se agregó porque durante la refactorización `TieneFondos` usó inicialmente `>` en lugar de `>=`, lo que rechazaba retirar el saldo completo (comportamiento distinto a V1). El defecto se corrigió en el commit `fix: TieneFondos permite retirar el saldo exacto (RN-04)`.
 
-Las capturas se guardan en [`docs/evidencias/4.5/`](evidencias/4.5/), separadas de las evidencias de V1.
+**Resultado: 11 de 11 pruebas aprobadas.** Ningún caso heredado cambió su resultado tras la refactorización (RN-10).
+
+Las capturas están en [`docs/evidencias/Lab_4.5/`](evidencias/Lab_4.5/), separadas de las evidencias de V1 (`Lab_3.10/`).
 
 **Nota sobre CP-06:** la cuenta está precargada, por lo que la prueba se realiza cambiando temporalmente `estadoCuenta` a `false` (L6) y restableciéndolo después.
 

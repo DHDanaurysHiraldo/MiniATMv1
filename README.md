@@ -87,21 +87,23 @@ Para probar una cuenta inactiva (CP-06), cambiar `estadoCuenta` a `false` en `Pr
 
 | Prueba | Escenario | Resultado esperado | Estado |
 |---|---|---|---|
-| CP-01 | Consultar saldo | Mostrar RD$10,000 | ⬜ |
-| CP-02 | Depositar RD$2,000 | Saldo RD$12,000 | ⬜ |
-| CP-03 | Retirar RD$3,000 | Saldo RD$7,000 | ⬜ |
-| CP-04 | Depositar RD$0 o -100 | Rechazar; saldo RD$10,000 | ⬜ |
-| CP-05 | Retirar RD$15,000 | Rechazar por fondos insuficientes | ⬜ |
-| CP-06 | Cuenta inactiva: depósito y retiro | Rechazar ambas; saldo sin cambio | ⬜ |
-| CP-07 | Opción 9 o letras en el menú | Error y retorno al menú | ⬜ |
-| CP-08 | Opción 4 | Terminar ejecución | ⬜ |
-| CP-09 | Depositar 2,000 y retirar 3,000 | Saldo final RD$9,000 | ⬜ |
-| CP-10 | Letras como monto | Rechazo sin excepción ni cambio de saldo | ⬜ |
-| CP-11* | Retirar el saldo exacto (RD$10,000) | Retiro exitoso; saldo RD$0 | ⬜ |
+| CP-01 | Consultar saldo | Mostrar RD$10,000 | ✅ Pasó |
+| CP-02 | Depositar RD$2,000 | Saldo RD$12,000 | ✅ Pasó |
+| CP-03 | Retirar RD$3,000 | Saldo RD$7,000 | ✅ Pasó |
+| CP-04 | Depositar RD$0 o -100 | Rechazar; saldo RD$10,000 | ✅ Pasó |
+| CP-05 | Retirar RD$15,000 | Rechazar por fondos insuficientes | ✅ Pasó |
+| CP-06 | Cuenta inactiva: depósito y retiro | Rechazar ambas; saldo sin cambio | ✅ Pasó |
+| CP-07 | Opción 9 o letras en el menú | Error y retorno al menú | ✅ Pasó |
+| CP-08 | Opción 4 | Terminar ejecución | ✅ Pasó |
+| CP-09 | Depositar 2,000 y retirar 3,000 | Saldo final RD$9,000 | ✅ Pasó |
+| CP-10 | Letras como monto | Rechazo sin excepción ni cambio de saldo | ✅ Pasó |
+| CP-11* | Retirar el saldo exacto (RD$10,000) | Retiro exitoso; saldo RD$0 | ✅ Pasó |
 
 \* Prueba adicional de valor límite para RN-04, no incluida en el BRD.
 
-Las capturas están en [`docs/evidencias/4.5/`](docs/evidencias/4.5/).
+**Resultado: 11 de 11 pruebas aprobadas.** La refactorización conserva el comportamiento de V1 (RN-10).
+
+Las capturas están en [`docs/evidencias/Lab_4.5/`](docs/evidencias/Lab_4.5/).
 
 ## Estructura del proyecto
 
@@ -114,8 +116,8 @@ Las capturas están en [`docs/evidencias/4.5/`](docs/evidencias/4.5/).
     ├── pseudocodigo_4.5.md        # Pseudocódigo 4.5 documentado
     ├── trazabilidad_4.5.md        # Matriz de trazabilidad 4.5
     └── evidencias/
-        ├── 4.5/                   # Capturas de la regresión 4.5
-        └── CP-xx_n.png            # Capturas de V1 (laboratorio 3.10)
+        ├── Lab_3.10/              # Capturas de V1 (laboratorio 3.10)
+        └── Lab_4.5/               # Capturas de la regresión 4.5
 ```
 
 ## Historial de versiones
