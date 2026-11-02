@@ -7,205 +7,108 @@ bool estadoCuenta = true; //false
 
 do
 {
-    Console.Clear();
-    Console.WriteLine("=================================");
-    Console.WriteLine("===== SISTEMA DE CAJERO ATM =====");
-    Console.WriteLine("=========================== v.1 =");
+    MostrarMenu(nombreCliente, numeroCuenta);
 
-    Console.WriteLine();
-
-    Console.WriteLine("INFORMACIÓN DE CUENTA ACTUAL:");
-    Console.WriteLine($"Cliente: {nombreCliente}");
-    Console.WriteLine($"No. de Cuenta: {numeroCuenta}");
-    Console.WriteLine();
-    Console.WriteLine("¿Que desea realizar hoy?");
-    Console.WriteLine("1. Consultar Saldo");
-    Console.WriteLine("2. Depositar saldo");
-    Console.WriteLine("3. Retirar saldo");
-    Console.WriteLine("4. Salir");
-
-    if (!int.TryParse(Console.ReadLine(), out opcionDeMenu))
+    if (!LeerOpcion(out opcionDeMenu))
     {
         Console.WriteLine("Operación Rechazada: Opción inválida");
-        Console.WriteLine("Presione una tecla para volver...");
-        Console.ReadKey();
-        Console.Clear();
+        VolverMenu();
     }
     else if (opcionDeMenu > 4)
     {
         Console.WriteLine("Operación Rechazada: Opción inválida");
-        Console.WriteLine("Presione una tecla para volver...");
-        Console.ReadKey();
-        Console.Clear();
+        VolverMenu();
+
     }
     else
     {
         switch (opcionDeMenu)
         {
             case 1:
-                Console.WriteLine($"Saldo Actual: RD$ {saldoDisponible}");
-                // VOLVER AL MENU ===
-                Console.WriteLine("Presione una tecla para volver...");
-                Console.ReadKey();
-                Console.Clear();
+                ConsultarSaldo(saldoDisponible);
+                VolverMenu();
                 break;
-            // ==================
+
             case 2:
-                if (estadoCuenta == false)
+                if (!CuentaEstaActiva(estadoCuenta))
                 {
                     Console.WriteLine("Operación Rechazada: su cuenta no está activa");
-                    // VOLVER AL MENU ===
-                    Console.WriteLine("Presione una tecla para volver...");
-                    Console.ReadKey();
-                    Console.Clear();
-                    //break;
-                    // ==================
+                    VolverMenu();
 
                 }
                 else
                 {
-                    // INTERFAZ ===========
-                    Console.Clear();
-                    Console.WriteLine("=================================");
-                    Console.WriteLine("===== SISTEMA DE CAJERO ATM =====");
-                    Console.WriteLine("=========================== v.1 =");
+                    MostrarEncabezado(nombreCliente, numeroCuenta);
 
-                    Console.WriteLine();
-
-                    Console.WriteLine("INFORMACIÓN DE CUENTA ACTUAL:");
-                    Console.WriteLine($"Cliente: {nombreCliente}");
-                    Console.WriteLine($"No. de Cuenta: {numeroCuenta}");
-
-                    Console.WriteLine();
-                    //=====================
-
-                    Console.Write("Ingrese el monto a depositar: ");
-                    if (!decimal.TryParse(Console.ReadLine(), out montoOperacion))
+                    if (!LeerMonto("Ingrese el monto a depositar: ", out montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: monto inválido");
-                        Console.WriteLine("Presione una tecla para volver...");
-                        Console.ReadKey();
-                        Console.Clear();
+                        VolverMenu();
+
                     }
-                    else if (montoOperacion <= 0)
+                    else if (!EsMontoValido(montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: el monto debe ser mayor que cero");
-                        Console.WriteLine("Presione una tecla para volver...");
-                        Console.ReadKey();
-                        Console.Clear();
+                        VolverMenu();
+
                     }
                     else
                     {
-                        saldoDisponible = saldoDisponible + montoOperacion;
-                        // INTERFAZ ===========
-                        Console.Clear();
-                        Console.WriteLine("=================================");
-                        Console.WriteLine("===== SISTEMA DE CAJERO ATM =====");
-                        Console.WriteLine("=========================== v.1 =");
+                        saldoDisponible = Depositar(saldoDisponible, montoOperacion);
 
-                        Console.WriteLine();
-
-                        Console.WriteLine("INFORMACIÓN DE CUENTA ACTUAL:");
-                        Console.WriteLine($"Cliente: {nombreCliente}");
-                        Console.WriteLine($"No. de Cuenta: {numeroCuenta}");
-
-                        Console.WriteLine();
-                        //=====================
+                        MostrarEncabezado(nombreCliente, numeroCuenta);
 
                         Console.WriteLine("DEPÓSITO EXITOSO");
                         Console.WriteLine($"Saldo Actual: RD$ {saldoDisponible}");
 
-                        // VOLVER AL MENU ===
-                        Console.WriteLine("Presione una tecla para volver...");
-                        Console.ReadKey();
-                        Console.Clear();
-                        //break;
-                        // ==================
+                        VolverMenu();
                     }
                 }
                 break;
 
 
             case 3:
-                if (estadoCuenta == false)
+                if (!CuentaEstaActiva(estadoCuenta))
                 {
                     Console.WriteLine("Operación Rechazada: su cuenta no está activa");
-                    //Console.WriteLine("Saliendo del programa...");
+                    VolverMenu();
 
-                    // VOLVER AL MENU ===
-                    Console.WriteLine("Presione una tecla para volver...");
-                    Console.ReadKey();
-                    Console.Clear();
-                    break;
-                    // ==================
                 }
                 else
                 {
-                    // INTERFAZ ===========
-                    Console.Clear();
-                    Console.WriteLine("=================================");
-                    Console.WriteLine("===== SISTEMA DE CAJERO ATM =====");
-                    Console.WriteLine("=========================== v.1 =");
 
-                    Console.WriteLine();
+                    MostrarEncabezado(nombreCliente, numeroCuenta);
 
-                    Console.WriteLine("INFORMACIÓN DE CUENTA ACTUAL:");
-                    Console.WriteLine($"Cliente: {nombreCliente}");
-                    Console.WriteLine($"No. de Cuenta: {numeroCuenta}");
-
-                    Console.WriteLine();
-                    //=====================
-
-                    Console.WriteLine($"SALDO ACTUAL: {saldoDisponible}");
-                    Console.Write("Ingrese el monto a retirar: ");
-                    if (!decimal.TryParse(Console.ReadLine(), out montoOperacion))
+                    ConsultarSaldo(saldoDisponible);
+                    if (!LeerMonto("Ingrese el monto a retirar: ", out montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: monto inválido");
-                        Console.WriteLine("Presione una tecla para volver...");
-                        Console.ReadKey();
-                        Console.Clear();
+                        VolverMenu();
+
                     }
-                    else if (montoOperacion <= 0)
+                    else if (!EsMontoValido(montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: el monto debe ser mayor que cero");
-                        Console.WriteLine("Presione una tecla para volver...");
-                        Console.ReadKey();
-                        Console.Clear();
+                        VolverMenu();
+
                     }
-                    else if (montoOperacion > saldoDisponible)
+                    else if (!TieneFondos(saldoDisponible, montoOperacion))
                     {
                         Console.WriteLine("Operación Rechazada: Fondos Insuficientes");
-                        Console.WriteLine("Presione una tecla para volver...");
-                        Console.ReadKey();
-                        Console.Clear();
+                        VolverMenu();
+
                     }
                     else
                     {
-                        saldoDisponible = saldoDisponible - montoOperacion;
+                        saldoDisponible = Retirar(saldoDisponible, montoOperacion);
 
-                        // INTERFAZ ===========
-                        Console.Clear();
-                        Console.WriteLine("=================================");
-                        Console.WriteLine("===== SISTEMA DE CAJERO ATM =====");
-                        Console.WriteLine("=========================== v.1 =");
-
-                        Console.WriteLine();
-
-                        Console.WriteLine("INFORMACIÓN DE CUENTA ACTUAL:");
-                        Console.WriteLine($"Cliente: {nombreCliente}");
-                        Console.WriteLine($"No. de Cuenta: {numeroCuenta}");
-
-                        Console.WriteLine();
-                        //=====================
+                        MostrarEncabezado(nombreCliente, numeroCuenta);
 
                         Console.WriteLine("RETIRO EXITOSO");
                         Console.WriteLine($"Saldo Actual: RD$ {saldoDisponible}");
-                        // VOLVER AL MENU ===
-                        Console.WriteLine("Presione una tecla para volver...");
-                        Console.ReadKey();
-                        Console.Clear();
-                        break;
-                        // ==================
+
+                        VolverMenu();
+
                     }
                 }
                 break;
@@ -218,15 +121,102 @@ do
 
             default:
                 Console.WriteLine("Operación Rechazada: Opción inválida");
-                // VOLVER AL MENU ===
-                Console.WriteLine("Presione una tecla para volver...");
-                Console.ReadKey();
-                Console.Clear();
+                VolverMenu();
+
                 break;
-                // ==================
+
         }
     }
 }
 while (opcionDeMenu != 4);
 
+/*===========================
+ * ======== MÉTODOS =========
+ * =========================*/
+
+static void MostrarMenu(string nombreCliente, string numeroCuenta)
+{
+    MostrarEncabezado(nombreCliente, numeroCuenta);
+    Console.WriteLine("¿Que desea realizar hoy?");
+    Console.WriteLine("1. Consultar Saldo");
+    Console.WriteLine("2. Depositar saldo");
+    Console.WriteLine("3. Retirar saldo");
+    Console.WriteLine("4. Salir");
+}
+
+static void MostrarEncabezado(string nombreCliente, string numeroCuenta)
+{
+    Console.Clear();
+    Console.WriteLine("=================================");
+    Console.WriteLine("===== SISTEMA DE CAJERO ATM =====");
+    Console.WriteLine("=========================== v.1 =");
+
+    Console.WriteLine();
+
+    Console.WriteLine("INFORMACIÓN DE CUENTA ACTUAL:");
+    Console.WriteLine($"Cliente: {nombreCliente}");
+    Console.WriteLine($"No. de Cuenta: {numeroCuenta}");
+    Console.WriteLine();
+}
+
+static void ConsultarSaldo(decimal saldoDisponible)
+{
+    Console.WriteLine($"Saldo Actual: RD$ {saldoDisponible}");
+    
+}
+
+static void VolverMenu()
+{
+    Console.WriteLine("Presione una tecla para volver...");
+    Console.ReadKey();
+    Console.Clear();
+}
+
+static bool CuentaEstaActiva(bool estadoCuenta)
+{
+    return estadoCuenta;
+}
+
+static bool LeerMonto(string mensaje, out decimal montoOperacion)
+{
+    Console.Write(mensaje);
+    return decimal.TryParse(Console.ReadLine(), out montoOperacion);
+}
+static bool LeerOpcion(out int opcionDeMenu)
+{
+    return int.TryParse(Console.ReadLine(), out opcionDeMenu);
+}
+
+static bool EsMontoValido(decimal montoOperacion)
+{
+    return montoOperacion > 0;
+}
+
+static bool TieneFondos(decimal saldoDisponible, decimal montoOperacion)
+{
+    return saldoDisponible >= montoOperacion;
+}
+
+static decimal Depositar(decimal saldoDisponible, decimal montoOperacion)
+{
+    if (!EsMontoValido(montoOperacion))
+    {
+        return saldoDisponible;         
+    }
+    return saldoDisponible + montoOperacion;    
+}
+
+static decimal Retirar(decimal saldoDisponible, decimal montoOperacion)
+{
+    if (!EsMontoValido(montoOperacion))
+    {
+        return saldoDisponible;
+    }
+
+    if (!TieneFondos(saldoDisponible, montoOperacion))
+    {
+        return saldoDisponible;
+    }
+    return saldoDisponible - montoOperacion;
+}
 
