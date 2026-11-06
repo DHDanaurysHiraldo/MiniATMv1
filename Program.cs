@@ -84,7 +84,7 @@ internal class Program
 
                             ConsolaATM.ConsultarSaldo(saldoDisponible);
 
-                            montoOperacion = ConsolaATM.LeerMonto("Ingrese el monto a depositar: ");
+                            montoOperacion = ConsolaATM.LeerMonto("Ingrese el monto a retirar: ");
 
                             if (!OperacionesBancarias.EsMontoValido(montoOperacion))
                             {
