@@ -47,15 +47,9 @@ internal class Program
                         }
                         else
                         {
-                            ConsolaATM.MostrarEncabezado(nombreCliente, numeroCuenta);
+                            montoOperacion = ConsolaATM.LeerMonto("Ingrese el monto a depositar: ");
 
-                            if (!ConsolaATM.LeerMonto("Ingrese el monto a depositar: ", out montoOperacion))
-                            {
-                                Console.WriteLine("Operación Rechazada: monto inválido");
-                                ConsolaATM.VolverMenu();
-
-                            }
-                            else if (!OperacionesBancarias.EsMontoValido(montoOperacion))
+                            if (!OperacionesBancarias.EsMontoValido(montoOperacion))
                             {
                                 Console.WriteLine("Operación Rechazada: el monto debe ser mayor que cero");
                                 ConsolaATM.VolverMenu();
@@ -89,13 +83,10 @@ internal class Program
                             ConsolaATM.MostrarEncabezado(nombreCliente, numeroCuenta);
 
                             ConsolaATM.ConsultarSaldo(saldoDisponible);
-                            if (!ConsolaATM.LeerMonto("Ingrese el monto a retirar: ", out montoOperacion))
-                            {
-                                Console.WriteLine("Operación Rechazada: monto inválido");
-                                ConsolaATM.VolverMenu();
 
-                            }
-                            else if (!OperacionesBancarias.EsMontoValido(montoOperacion))
+                            montoOperacion = ConsolaATM.LeerMonto("Ingrese el monto a depositar: ");
+
+                            if (!OperacionesBancarias.EsMontoValido(montoOperacion))
                             {
                                 Console.WriteLine("Operación Rechazada: el monto debe ser mayor que cero");
                                 ConsolaATM.VolverMenu();

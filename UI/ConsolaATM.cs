@@ -44,10 +44,23 @@ internal static class ConsolaATM
         Console.ReadKey();
         Console.Clear();
     }
-    public static bool LeerMonto(string mensaje, out decimal montoOperacion)
+    public static decimal LeerMonto(string mensaje)
     {
-        Console.Write(mensaje);
-        return decimal.TryParse(Console.ReadLine(), out montoOperacion);
+        decimal montoOperacion;
+        bool esNumerico;
+
+        do
+        {
+            Console.Write(mensaje);
+            esNumerico = decimal.TryParse(Console.ReadLine(), out montoOperacion);
+
+            if (!esNumerico)
+            {
+                Console.WriteLine("Operación Rechazada: monto inválido, intente nuevamente.");
+            }
+        } while (!esNumerico);
+
+        return montoOperacion;
     }
     public static bool LeerOpcion(out int opcionDeMenu)
     {
