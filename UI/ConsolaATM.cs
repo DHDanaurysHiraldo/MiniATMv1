@@ -11,7 +11,10 @@ internal static class ConsolaATM
         Console.WriteLine("1. Consultar Saldo");
         Console.WriteLine("2. Depositar saldo");
         Console.WriteLine("3. Retirar saldo");
-        Console.WriteLine("4. Salir");
+        Console.WriteLine("4. Consultar movimientos");
+        Console.WriteLine("5. Salir");
+        Console.WriteLine();
+        Console.Write("Seleccione una opción: ");
     }
 
     public static void MostrarEncabezado(string nombreCliente, string numeroCuenta)

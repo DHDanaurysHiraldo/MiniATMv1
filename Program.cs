@@ -23,7 +23,7 @@ internal class Program
                 Console.WriteLine("Operación Rechazada: Opción inválida");
                 ConsolaATM.VolverMenu();
             }
-            else if (opcionDeMenu > 4)
+            else if (opcionDeMenu > 5)
             {
                 Console.WriteLine("Operación Rechazada: Opción inválida");
                 ConsolaATM.VolverMenu();
@@ -123,10 +123,16 @@ internal class Program
                         break;
 
                     case 4:
+                        Console.WriteLine("Próximamente...");
+                        ConsolaATM.VolverMenu();
+                        break;
+
+
+
+                    case 5:
                         Console.WriteLine("Gracias por preferir nuestro ATM!!");
                         Console.WriteLine("Saliendo del programa...");
                         break;
-
 
                     default:
                         Console.WriteLine("Operación Rechazada: Opción inválida");
@@ -138,7 +144,7 @@ internal class Program
             }
         }
 
-        while (opcionDeMenu != 4);
+        while (opcionDeMenu != 5);
     }
 
 
