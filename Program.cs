@@ -9,7 +9,7 @@ internal class Program
     {
         string nombreCliente = "Samuel Reyes";
         string numeroCuenta = "0458291046";
-        decimal saldoDisponible = 10000.00m;
+        decimal saldoDisponible = 5000.00m;
         decimal montoOperacion;
         int opcionDeMenu;
         bool estadoCuenta = true; //false

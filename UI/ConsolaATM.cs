@@ -19,7 +19,7 @@ internal static class ConsolaATM
         Console.Clear();
         Console.WriteLine("=================================");
         Console.WriteLine("===== SISTEMA DE CAJERO ATM =====");
-        Console.WriteLine("=========================== v.1 =");
+        Console.WriteLine("=========================== v.2 =");
 
         Console.WriteLine();
 
